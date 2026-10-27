@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sana Özel...</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="ambient-background"></div>
+
+    <div class="app-container">
+        
+        <!-- EKRAN 1: TAVŞANLI GİRİŞ MESAJI (YENİ) -->
+        <section class="screen active" id="screen-1">
+            <div class="content-box">
+                <div class="rabbit-heart-wrapper">
+                    <div class="cute-rabbit">🐰</div>
+                    <div class="big-magic-heart">🤍</div>
+                </div>
+                
+                <h2 style="font-size: 1.8rem; margin-top: 20px;">Merhaba TABSAN<br>Bu Site Senin İçin...</h2>
+                
+                <div class="nav-buttons">
+                    <button class="btn-nav" onclick="nextScreen(2)">Devam Et</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- EKRAN 2: ŞİFRE -->
+        <section class="screen" id="screen-2">
+            <div class="content-box">
+                <span class="subtitle">SADECE SANA ÖZEL</span>
+                <h2>Sürprizi Görmek İçin<br>Şifreyi Gir</h2>
+                <p class="hint">İpucu: Sevgili Olmadan Öncesi... (adva**eflo**t)</p>
+                <div class="input-group">
+                    <input type="text" id="password-input" placeholder="Şifre...">
+                </div>
+                <p class="error-msg" id="error-msg">Şifre yanlış, tekrar dene...</p>
+                <button class="btn-primary" onclick="checkPassword()">Giriş Yap</button>
+            </div>
+        </section>
+
+        <!-- EKRAN 3: KARŞILAMA -->
+        <section class="screen" id="screen-3">
+            <div class="content-box">
+                <span class="subtitle">HOŞ GELDİN</span>
+                
+                <div class="greeting-photo">
+                    <img src="assets/img/askim_1.jpg" onerror="this.src='https://via.placeholder.com/200/2d0a16/d4af37?text=Sen'" alt="Güzeller Güzelim">
+                </div>
+                
+                <h2>Senin İçin Hazırladım<br>umarım beğenirsin...</h2>
+                <p class="final-text" style="margin-bottom: 30px; font-style: italic;">Güzeller Güzelimm 🤍</p>
+                
+                <div class="nav-buttons">
+                    <button class="btn-nav" onclick="nextScreen(4)">Görmek İster Misin?</button>
+                </div>
+            </div>
+        </section>
+
+<!-- EKRAN 4: ŞARKIMIZ (YOUTUBE ÖN İZLEMELİ) -->
+        <section class="screen" id="screen-4">
+            <div class="content-box">
+                <span class="subtitle">SENİN İÇİN SEÇTİM</span>
+                <h2>Toprak Yağmura, Ben Sana...</h2>
+                
+                <div class="youtube-wrapper">
+                    <!-- VIDEO_ID_BURAYA kısmına kendi YouTube video kodunuzu yazın -->
+                    <iframe 
+                        src="https://www.youtube.com/embed/MxS1E4PnU_k?controls=1&showinfo=0&rel=0" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <p class="final-text" style="font-size: 1rem; font-style: italic; margin-top: 20px; margin-bottom: 30px;">
+                    Senin için aşkım dinle... 🤍
+                </p>
+
+                <div class="nav-buttons dual">
+                    <button class="btn-nav-outline" onclick="prevScreen(3)">Geri</button>
+                    <button class="btn-nav" onclick="nextScreen(5)">Devam Et</button>
+                </div>
+            </div>
+        </section>
+        
+       <!-- EKRAN 5: HİKAYE VE ÖZEL GÜNLER SAYACI (GÜNCELLENDİ) -->
+        <section class="screen" id="screen-5">
+            <div class="content-box">
+                <span class="subtitle">AŞKIMIZIN HİKAYESİ</span>
+                
+                <!-- JS ile değişecek olan Ana Başlık -->
+                <h2 id="milestone-title" style="transition: opacity 0.3s ease;">Her Şey Burada Başladı</h2>
+                
+                <div class="couple-avatars">
+                    <div class="avatar"><img src="assets/img/askim_1.jpg" alt="Sen" onerror="this.src='https://via.placeholder.com/100/2d0a16/d4af37?text=S'"></div>
+                    <div class="heart-icon">🤍</div>
+                    <div class="avatar"><img src="assets/img/askın.jpg" alt="Ben" onerror="this.src='https://via.placeholder.com/100/2d0a16/d4af37?text=B'"></div>
+                </div>
+
+                <!-- Kaydırmalı Sayaç Alanı -->
+                <div class="counter-box" style="position: relative; padding-bottom: 25px;">
+                    <p class="start-date" id="milestone-date" style="transition: opacity 0.3s ease;">28 Ekim 2024</p>
+                    <div class="divider"></div>
+                    
+                    <h1 id="milestone-counter" style="transition: opacity 0.3s ease;">0</h1>
+                    
+                    <p class="date-sub" id="milestone-desc" style="transition: opacity 0.3s ease;">gündür kalbimdesin...</p>
+                    
+                    <!-- Slider Kontrolleri -->
+                    <div class="slider-controls" style="margin-top: 25px; margin-bottom: 0;">
+                        <button class="btn-icon" onclick="changeMilestone(-1)" style="width: 35px; height: 35px; font-size: 0.9rem;">❮</button>
+                        <div class="slider-dots" id="milestone-dots"></div>
+                        <button class="btn-icon" onclick="changeMilestone(1)" style="width: 35px; height: 35px; font-size: 0.9rem;">❯</button>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons dual">
+                    <button class="btn-nav-outline" onclick="prevScreen(4)">Geri</button>
+                    <button class="btn-nav" onclick="nextScreen(6)">Devam Et</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- EKRAN 6: ANI DEFTERİ -->
+        <section class="screen" id="screen-6">
+            <div class="content-box">
+                <span class="subtitle">ÖZEL ANILARIMIZ</span>
+                <h2>Zamanın Durduğu Anlar</h2>
+                
+                <div class="photo-frame">
+                    <div class="img-wrapper">
+                        <img id="slider-img" src="assets/img/askin.jpg" onerror="this.src='https://via.placeholder.com/400x400/2d0a16/d4af37?text=An%C4%B1+1'" alt="Anı">
+                    </div>
+                    <div class="photo-caption" id="slider-caption">Anı #1</div>
+                </div>
+                
+                <div class="slider-controls">
+                    <button class="btn-icon" onclick="changePhoto(-1)">❮</button>
+                    <div class="slider-dots" id="slider-dots"></div>
+                    <button class="btn-icon" onclick="changePhoto(1)">❯</button>
+                </div>
+
+                <div class="nav-buttons dual">
+                    <button class="btn-nav-outline" onclick="prevScreen(5)">Geri</button>
+                    <button class="btn-nav" onclick="nextScreen(7)">Devam Et</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- EKRAN 7: PAPATYA FALI -->
+        <section class="screen" id="screen-7">
+            <div class="content-box">
+                <span class="subtitle">OYUN EKLEMESEM OLMAZDI...</span>
+                <h2>Seviyor mu, Sevmiyor mu?</h2>
+                <p class="hint">Yaprakları koparmak için tıkla güzelim</p>
+
+                <div class="daisy-container">
+                    <div class="daisy" id="daisy">
+                        <div class="daisy-center"></div>
+                    </div>
+                </div>
+                
+                <div class="result-container">
+                    <h3 class="daisy-result" id="daisy-result">...</h3>
+                </div>
+
+                <div class="nav-buttons dual">
+                    <button class="btn-nav-outline" onclick="prevScreen(6)">Geri</button>
+                    <button class="btn-nav" onclick="nextScreen(8)" id="btn-daisy-next" style="opacity: 0.5; pointer-events: none;">Devam Et</button>
+                </div>
+            </div>
+        </section>
+
+<!-- EKRAN 8: SÜRPRİZ MEKTUP (YENİ VİNTAGE TASARIM) -->
+        <section class="screen" id="screen-8">
+            <div class="content-box">
+                <span class="subtitle">SÜRPRİZ MEKTUP</span>
+                <h2>İçimden Gelenler</h2>
+                
+                <!-- Mektubu Açma Butonu (Zarf Mührü Görünümlü) -->
+                <div class="envelope-trigger" onclick="openLetter()">
+                    <div class="wax-seal">Z&D</div>
+                    <p>Mektubu Açmak İçin Dokun</p>
+                </div>
+
+                <div class="nav-buttons dual">
+                    <button class="btn-nav-outline" onclick="prevScreen(7)">Geri</button>
+                    <button class="btn-nav" onclick="nextScreen(9)">Devam Et</button>
+                </div>
+            </div>
+
+            <!-- Tıklayınca Açılan Eski Kağıt Mektup Ekranı (Modal) -->
+            <div class="letter-modal" id="letter-modal">
+                <div class="vintage-paper">
+                    <button class="close-letter" onclick="closeLetter()">✖</button>
+                    
+                    <div class="vintage-content">
+                        <h3 class="letter-greeting">Merhaba Advance Flörtüm,</h3>
+                        
+                       <p>Ne yazacağımı nelerden bahsedeceğimi inan ki tam olarak bilmiyorum. Sana olan aşkımı mı anlatsam sayfalarca yoksa güzelliğinizi betimlemeler yaparak anlatmaya mı çalışsam ? Papatya oyunu varya... Seviyor,Sevmiyor,Seviyor,Sevmiyor orada her yaprakta seni sevdiğimi haykırmak isterim. Yağmur yağınca camdan dışarı bakıp kokunu ararım. Gökkuşağı açtığında gözlerin aklıma gelir. Gökkuşağı insanlarda mutluluk, sevinç, heyecan uyandırır ya benim bu duygularım gözlerine baktıkça oluyor, sana sarılınca, kokunu içime çektikçe oluyor... Uzun uzun yazabilirim güzelliğinizi, size verdiğim değeri belki tam olarak ifade edemeyebilirim ama en azından denerim ki sen de anlarsın :')</p>
+                        
+                        <p>Bana yaşattığın her güzel an, hissettirdiğin her tarifsiz duygu için sana minnettarım. Hep Benimle Ol, Benim Ol...</p>
+                        
+                        <p>Seni Çoook Seviyorum Aptalooz Tabsannn</p>
+                        
+                        <h3 class="letter-signature">Seni kelimelerin ötesinde seven<br>Aşkın 🤍</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EKRAN 9: BİTİŞ EKRANI -->
+        <section class="screen" id="screen-9">
+            <div class="content-box final-screen-box">
+                <div class="big-heart">🤍</div>
+                <h2 class="final-title">Burada site bitmiş olabilir bitanem...</h2>
+                <h2 class="final-subtitle">Ama sana olan sevgim<br>ASLA!</h2>
+                <p class="final-text">İyi ki varsın, iyi ki benimsin. MUUUUAHHH ∞</p>
+                
+                <div class="nav-buttons" style="margin-top: 50px;">
+                    <button class="btn-nav-outline" onclick="prevScreen(8)">Mektuba Dön</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
